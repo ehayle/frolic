@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 from .base import *
 import dj_database_url
 import os
+from decouple import config
 
 env = os.environ.copy()
 SECRET_KEY = env['SECRET_KEY']
@@ -12,9 +13,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 #STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 #STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-AWS_STORAGE_BUCKET_NAME = 'frolic-crm'
-AWS_ACCESS_KEY_ID = 'AKIA3KIOEP565EEOQYMI'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = config('AWS_STORAGE_BUCKET_NAME')
+AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 MEDIA_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
