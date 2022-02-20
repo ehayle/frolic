@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'menus',
     'contact',
     'core',
+    'storages',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.modeladmin',
